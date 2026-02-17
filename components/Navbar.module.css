@@ -95,9 +95,66 @@
 @media (max-width: 992px) {
     .links {
         display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--background);
+        flex-direction: column;
+        justify-content: center;
+        padding: 40px;
+        gap: 32px;
+        z-index: 1000;
+    }
+
+    .links.show {
+        display: flex;
+        animation: menuFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes menuFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .links a {
+        font-size: 24px;
+        text-transform: none;
+        font-family: var(--font-serif);
+        font-style: italic;
+        opacity: 1;
+    }
+
+    .navActions {
+        margin-top: 20px;
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
     }
 
     .mobileToggle {
         display: flex;
+        position: relative;
+        z-index: 1100;
+    }
+
+    .mobileToggle.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .mobileToggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobileToggle.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
     }
 }
