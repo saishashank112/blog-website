@@ -21,27 +21,48 @@ export interface PostData {
 
 // Helper to fetch from Backend
 async function getBackendPosts(): Promise<PostData[]> {
+  // 1. Try API first (Works locally)
   try {
     const res = await fetch(`${BACKEND_URL}/posts`, {
       next: { revalidate: 0 },
       cache: 'no-store'
     });
-    if (!res.ok) return [];
-    const posts = await res.json();
-    return posts.map((p: any) => ({
-      ...p,
-      id: p.id, // Use the real unique ID for React keys
-      slug: p.slug || p.id, // Prefer slug for URL routing
-      date: p.createdAt ? new Date(p.createdAt).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
-      }) : p.date
-    }));
+    if (res.ok) {
+      const posts = await res.json();
+      return posts.map((p: any) => ({
+        ...p,
+        id: p.id,
+        slug: p.slug || p.id,
+        date: p.createdAt ? new Date(p.createdAt).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric'
+        }) : p.date
+      }));
+    }
   } catch (e) {
-    console.error('Backend connection failed, ensuring fallback...');
-    return [];
+    console.log('API not reachable, attempting direct database read...');
   }
+
+  // 2. Direct DB Read (Fallback for Vercel/Production)
+  try {
+    const dbPath = path.join(process.cwd(), 'server', 'db.json');
+    if (fs.existsSync(dbPath)) {
+      const dbData = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
+      return (dbData.posts || []).map((p: any) => ({
+        ...p,
+        id: p.id,
+        slug: p.slug || p.id,
+        date: p.createdAt ? new Date(p.createdAt).toLocaleDateString('en-US', {
+          year: 'numeric', month: 'short', day: 'numeric'
+        }) : p.date
+      }));
+    }
+  } catch (e) {
+    console.error('Database read failed:', e);
+  }
+
+  return [];
 }
 
 export async function getAllPosts(): Promise<PostData[]> {
@@ -75,7 +96,7 @@ export async function getAllPosts(): Promise<PostData[]> {
 export async function getPostData(id: string) {
   // 1. Try fetching from Backend first (using slug/id)
   try {
-    const res = await fetch(`${BACKEND_URL}/posts/${id}`);
+    const res = await fetch(`${BACKEND_URL}/posts/${id}`, { cache: 'no-store' });
     if (res.ok) {
       const post = await res.json();
       const processedContent = await remark().use(html).process(post.content);
@@ -92,7 +113,28 @@ export async function getPostData(id: string) {
     }
   } catch (e) { }
 
-  // 2. Fallback to Markdown files
+  // 2. Try direct DB read (Fallback for Vercel)
+  try {
+    const dbPath = path.join(process.cwd(), 'server', 'db.json');
+    if (fs.existsSync(dbPath)) {
+      const dbData = JSON.parse(fs.readFileSync(dbPath, 'utf8'));
+      const post = dbData.posts.find((p: any) => p.slug === id || p.id === id);
+      if (post) {
+        const processedContent = await remark().use(html).process(post.content);
+        const contentHtml = processedContent.toString();
+        return {
+          ...post,
+          id: post.id,
+          date: new Date(post.createdAt).toLocaleDateString('en-US', {
+            year: 'numeric', month: 'short', day: 'numeric'
+          }),
+          contentHtml
+        };
+      }
+    }
+  } catch (e) { }
+
+  // 3. Fallback to Markdown files
   const fullPath = path.join(postsDirectory, `${id}.md`);
   if (fs.existsSync(fullPath)) {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
