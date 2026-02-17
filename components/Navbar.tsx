@@ -56,5 +56,6 @@ export default function Navbar() {
             </div>
             <SubscribeModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </nav>
+
     );
 }

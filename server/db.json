@@ -68,11 +68,32 @@
       "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800",
       "excerpt": "A short summary of your daily blog post goes here...",
       "createdAt": "2026-02-15T18:30:00.000Z"
+    },
+    {
+      "id": "1771317665136",
+      "title": "hi",
+      "slug": "hi",
+      "content": "hi",
+      "category": "Technology",
+      "image": "https://globalfocusmagazine.com/wp-content/uploads/2020/02/Engaging_with_technology-1536x1024.jpg",
+      "excerpt": "hi",
+      "createdAt": "2026-02-17T08:41:05.136Z"
+    },
+    {
+      "id": "1771317709853",
+      "title": "hi",
+      "slug": "hi",
+      "content": "hi",
+      "category": "Technology",
+      "image": "https://globalfocusmagazine.com/wp-content/uploads/2020/02/Engaging_with_technology-1536x1024.jpg",
+      "excerpt": "hi",
+      "createdAt": "2026-02-17T08:41:49.853Z"
     }
   ],
   "subscribers": [
     "asaishashank22@ifheindia.org",
-    "eekshitha.bellamkonda@gmail.com"
+    "eekshitha.bellamkonda@gmail.com",
+    "saishashankallampally@gmail.com"
   ],
   "messages": [
     {

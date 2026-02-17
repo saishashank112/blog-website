@@ -46,7 +46,12 @@ app.post('/api/posts', (req, res) => {
     if (!title || !content) return res.status(400).json({ message: 'Title and content are required' });
 
     const db = getDB();
-    const slug = title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+    let slug = title.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
+
+    // Ensure slug uniqueness
+    if (db.posts.some(p => p.slug === slug)) {
+        slug = `${slug}-${Math.random().toString(36).substring(2, 6)}`;
+    }
 
     const newPost = {
         id: Date.now().toString(),

@@ -4,6 +4,7 @@ import SmartImage from './SmartImage';
 
 interface BlogCardProps {
     id: string;
+    slug?: string;
     title: string;
     excerpt: string;
     date: string;
@@ -11,9 +12,10 @@ interface BlogCardProps {
     category: string;
 }
 
-export default function BlogCard({ id, title, excerpt, date, image, category }: BlogCardProps) {
+export default function BlogCard({ id, slug, title, excerpt, date, image, category }: BlogCardProps) {
+    const routeId = slug || id;
     return (
-        <Link href={`/blog/${id}`} className={`${styles.card} animate-reveal`}>
+        <Link href={`/blog/${routeId}`} className={`${styles.card} animate-reveal`}>
             <div className={styles.imageWrapper}>
                 <SmartImage src={image} alt={title} className={styles.image} />
                 <span className={styles.category}>{category}</span>

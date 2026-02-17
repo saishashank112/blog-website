@@ -4,6 +4,9 @@ import BlogCard from '@/components/BlogCard';
 import { getAllPosts } from '@/lib/posts';
 import styles from './blog.module.css';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function BlogListing() {
     const posts = await getAllPosts();
     return (

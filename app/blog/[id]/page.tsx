@@ -8,6 +8,9 @@ import Link from 'next/link';
 import ShareButtons from '@/components/ShareButtons';
 import SmartImage from '@/components/SmartImage';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export async function generateStaticParams() {
     const posts = await getAllPosts();
     return posts.map((post) => ({

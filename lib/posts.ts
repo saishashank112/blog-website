@@ -22,12 +22,16 @@ export interface PostData {
 // Helper to fetch from Backend
 async function getBackendPosts(): Promise<PostData[]> {
   try {
-    const res = await fetch(`${BACKEND_URL}/posts`, { next: { revalidate: 0 } });
+    const res = await fetch(`${BACKEND_URL}/posts`, {
+      next: { revalidate: 0 },
+      cache: 'no-store'
+    });
     if (!res.ok) return [];
     const posts = await res.json();
     return posts.map((p: any) => ({
       ...p,
-      id: p.slug || p.id, // Prefer slug for URL routing
+      id: p.id, // Use the real unique ID for React keys
+      slug: p.slug || p.id, // Prefer slug for URL routing
       date: p.createdAt ? new Date(p.createdAt).toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'short',
