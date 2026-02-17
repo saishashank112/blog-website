@@ -86,8 +86,12 @@ export async function getAllPosts(): Promise<PostData[]> {
   }
 
   // Combine and remove duplicates (prefer backend)
-  const backendIds = new Set(backendPosts.map(p => p.id));
-  const uniqueFilePosts = filePosts.filter(p => !backendIds.has(p.id));
+  const backendIdentifiers = new Set([
+    ...backendPosts.map(p => p.id),
+    ...backendPosts.map(p => p.slug).filter(Boolean)
+  ]);
+
+  const uniqueFilePosts = filePosts.filter(p => !backendIdentifiers.has(p.id));
 
   const allPosts = [...backendPosts, ...uniqueFilePosts];
   return allPosts.sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime()));
