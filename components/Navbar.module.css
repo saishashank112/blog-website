@@ -1,0 +1,103 @@
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    border-bottom: 1px solid transparent;
+}
+
+.scrolled {
+    height: 70px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 26px;
+    font-weight: 900;
+    text-decoration: none;
+    color: var(--foreground);
+    letter-spacing: -0.05em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo span {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--accent-start);
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.links a {
+    text-decoration: none;
+    color: var(--foreground);
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.links a:hover {
+    opacity: 1;
+    color: var(--accent-start);
+}
+
+.navActions {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.mobileToggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.mobileToggle span {
+    width: 28px;
+    height: 2px;
+    background: var(--foreground);
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 992px) {
+    .links {
+        display: none;
+    }
+
+    .mobileToggle {
+        display: flex;
+    }
+}

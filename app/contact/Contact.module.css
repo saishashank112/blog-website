@@ -1,0 +1,159 @@
+.main {
+    position: relative;
+    background: var(--background);
+}
+
+.hero {
+    padding: 180px 0 100px;
+}
+
+.title {
+    font-size: clamp(48px, 10vw, 92px);
+    margin-bottom: 32px;
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+}
+
+.subtitle {
+    font-size: 22px;
+    color: var(--text-muted);
+    max-width: 600px;
+    line-height: 1.4;
+    opacity: 0.8;
+}
+
+.contactCard {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 64px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.group label {
+    font-weight: 800;
+    font-size: 11px;
+    color: var(--accent-start);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+.group input,
+.group textarea {
+    padding: 18px 24px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--background);
+    font-family: inherit;
+    font-size: 16px;
+    color: var(--foreground);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group input:focus,
+.group textarea:focus {
+    outline: none;
+    border-color: var(--accent-start);
+    box-shadow: 0 0 0 4px var(--accent-glow);
+    transform: translateY(-2px);
+}
+
+.error {
+    color: #ef4444;
+    font-weight: 700;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* SUCCESS POPUP */
+.popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(2, 6, 23, 0.4);
+    backdrop-filter: blur(20px);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.popupContent {
+    max-width: 440px;
+    width: 100%;
+    background: var(--background);
+    padding: 64px 48px;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border);
+    animation: popupFade 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes popupFade {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.popupIcon {
+    width: 80px;
+    height: 80px;
+    background: var(--accent-glow);
+    color: var(--accent-start);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    margin: 0 auto 32px;
+}
+
+.popupContent h3 {
+    font-family: var(--font-heading);
+    font-size: 32px;
+    margin-bottom: 16px;
+}
+
+.popupContent p {
+    font-size: 18px;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .row {
+        grid-template-columns: 1fr;
+    }
+
+    .contactCard {
+        padding: 40px 24px;
+    }
+
+    .hero {
+        padding: 140px 0 60px;
+    }
+}

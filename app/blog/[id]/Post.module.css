@@ -1,0 +1,231 @@
+.main {
+    padding-top: 80px;
+    background: var(--background);
+}
+
+.header {
+    padding: 120px 0 60px;
+    border-bottom: 1px solid var(--border);
+}
+
+.backContainer {
+    margin-bottom: 48px;
+}
+
+.backBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--foreground);
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+}
+
+.backBtn:hover {
+    color: var(--accent-start);
+    opacity: 1;
+    transform: translateX(-4px);
+}
+
+.meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.category {
+    padding: 6px 16px;
+    background: var(--accent-start);
+    color: white;
+    border-radius: 99px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.date {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-muted);
+    font-family: var(--font-heading);
+}
+
+.title {
+    font-size: clamp(48px, 8vw, 84px);
+    line-height: 0.95;
+    margin-bottom: 48px;
+    letter-spacing: -0.05em;
+    font-family: var(--font-heading);
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.authorImg {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-start);
+    padding: 4px;
+}
+
+.authorInfo h4 {
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.authorInfo p {
+    font-size: 14px;
+    opacity: 0.6;
+}
+
+.heroImageWrapper {
+    margin: 80px 0;
+}
+
+.heroImage {
+    width: 100%;
+    height: auto;
+    max-height: 700px;
+    object-fit: cover;
+    border-radius: 32px;
+    box-shadow: var(--shadow-lg);
+}
+
+.articleLayout {
+    display: grid;
+    grid-template-columns: 800px 300px;
+    gap: 100px;
+    margin-top: 60px;
+    align-items: start;
+}
+
+.content {
+    font-size: 20px;
+    line-height: 1.8;
+    color: var(--foreground);
+    max-width: 75ch;
+    /* Premium reading length */
+}
+
+/* Drop Cap */
+.content p:first-of-type::first-letter {
+    float: left;
+    font-size: 84px;
+    line-height: 0.8;
+    padding-top: 8px;
+    padding-right: 12px;
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--accent-start);
+}
+
+.content h2 {
+    font-family: var(--font-heading);
+    font-size: 40px;
+    margin: 80px 0 32px;
+    letter-spacing: -0.04em;
+}
+
+.content p {
+    margin-bottom: 40px;
+}
+
+.content blockquote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 32px;
+    line-height: 1.4;
+    padding: 60px;
+    border-left: 1px solid var(--accent-start);
+    background: var(--primary-light);
+    color: var(--primary);
+    margin: 80px 0;
+    position: relative;
+}
+
+[data-theme='dark'] .content blockquote {
+    color: white;
+}
+
+.aside {
+    position: sticky;
+    top: 120px;
+}
+
+.share {
+    padding: 40px;
+    text-align: center;
+}
+
+.share h4 {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 24px;
+    opacity: 0.5;
+}
+
+.shareButtons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.shareBtn {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--primary-light);
+    color: var(--foreground);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1;
+    padding: 0;
+    backdrop-filter: blur(10px);
+}
+
+.shareBtn:hover {
+    background: var(--accent-start);
+    color: white;
+    border-color: var(--accent-start);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px -5px var(--accent-glow);
+}
+
+@media (max-width: 1200px) {
+    .articleLayout {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .aside {
+        position: relative;
+        top: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .header {
+        padding: 80px 0 40px;
+    }
+
+    .articleLayout {
+        margin-top: 40px;
+    }
+}

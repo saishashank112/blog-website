@@ -1,0 +1,273 @@
+.main {
+    padding-top: 80px;
+    min-height: 100vh;
+    position: relative;
+    background: var(--background);
+}
+
+.hero {
+    padding: 120px 0 80px;
+    text-align: center;
+}
+
+.title {
+    font-size: clamp(40px, 6vw, 72px);
+    margin-bottom: 16px;
+    font-weight: 800;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    font-size: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.loginContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    padding: 24px;
+}
+
+.loginCard {
+    max-width: 440px;
+    width: 100%;
+    padding: 60px 48px;
+    text-align: center;
+}
+
+.input {
+    padding: 16px 20px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: var(--glass-bg);
+    color: var(--foreground);
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 24px;
+    transition: all 0.3s ease;
+}
+
+.input:focus {
+    outline: none;
+    border-color: var(--accent-start);
+    box-shadow: 0 0 0 4px var(--accent-glow);
+}
+
+.adminGrid {
+    display: grid;
+    grid-template-columns: 1.6fr 1.2fr;
+    gap: 48px;
+    align-items: start;
+}
+
+.adminCard {
+    padding: 60px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.group label {
+    font-weight: 800;
+    font-size: 11px;
+    color: var(--accent-start);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+}
+
+.group input,
+.group textarea,
+.group select {
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--background);
+    font-family: inherit;
+    font-size: 16px;
+    color: var(--foreground);
+    transition: all 0.3s ease;
+}
+
+.group input:focus,
+.group textarea:focus {
+    border-color: var(--accent-start);
+    box-shadow: 0 0 0 4px var(--accent-glow);
+}
+
+.postListSide {
+    display: flex;
+    flex-direction: column;
+}
+
+.listContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.listItem {
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--border);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-bottom: 12px;
+}
+
+.listItem:hover {
+    border-color: var(--accent-start);
+    transform: translateX(8px);
+    background: var(--glass-bg);
+}
+
+.listInfo h4 {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 4px;
+    letter-spacing: -0.02em;
+}
+
+.messageCard {
+    padding: 24px;
+    border-radius: 20px;
+    background: var(--glass-bg);
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+}
+
+.messageHeader {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.messageHeader h4 {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--accent-start);
+}
+
+.messageHeader span {
+    font-size: 11px;
+    font-weight: 700;
+    opacity: 0.5;
+}
+
+.messageBody {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--foreground);
+    white-space: pre-wrap;
+}
+
+.messageFooter {
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.listInfo span {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-start);
+    opacity: 0.6;
+}
+
+.listActions {
+    display: flex;
+    gap: 12px;
+}
+
+.editBtn,
+.deleteBtn {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editBtn {
+    background: var(--accent-glow);
+    color: var(--accent-start);
+}
+
+.editBtn:hover {
+    background: var(--accent-start);
+    color: white;
+    transform: scale(1.1);
+}
+
+.deleteBtn {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+}
+
+.deleteBtn:hover {
+    background: #ef4444;
+    color: white;
+    transform: scale(1.1);
+}
+
+.statsRow {
+    display: flex;
+    gap: 32px;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.statTile {
+    padding: 32px 48px;
+    text-align: center;
+    flex: 1;
+    max-width: 280px;
+}
+
+.statTile span {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--accent-start);
+    display: block;
+    margin-bottom: 12px;
+}
+
+.statTile h2 {
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+}
+
+.logoutBtn {
+    margin-top: 64px;
+}
+
+@media (max-width: 1024px) {
+    .adminGrid {
+        grid-template-columns: 1fr;
+    }
+}
