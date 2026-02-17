@@ -68,6 +68,16 @@
       "image": "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800",
       "excerpt": "A short summary of your daily blog post goes here...",
       "createdAt": "2026-02-15T18:30:00.000Z"
+    },
+    {
+      "id": "1771323203601",
+      "title": "hi",
+      "slug": "hi",
+      "content": "hi",
+      "category": "Technology",
+      "image": "https://globalfocusmagazine.com/wp-content/uploads/2020/02/Engaging_with_technology-1536x1024.jpg",
+      "excerpt": "hi",
+      "createdAt": "2026-02-17T10:13:23.601Z"
     }
   ],
   "subscribers": [
@@ -83,6 +93,14 @@
       "subject": "hi",
       "message": "hi",
       "createdAt": "2026-02-17T06:09:05.796Z"
+    },
+    {
+      "id": "1771323421788",
+      "name": "sai",
+      "email": "asaishashank@gmail.com",
+      "subject": "hello",
+      "message": "follow",
+      "createdAt": "2026-02-17T10:17:01.788Z"
     }
   ]
 }
