@@ -47,7 +47,7 @@ export default async function Home() {
                 <div className={styles.featuredContent}>
                   <a href={`/blog/${featuredPosts[0].id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                     <h3>{featuredPosts[0].title}</h3>
-                    <p style={{ fontSize: '14px' }}>{featuredPosts[0].excerpt.substring(0, 100)}...</p>
+                    <p style={{ fontSize: '14px' }}>{featuredPosts[0].excerpt?.substring(0, 100)}...</p>
                   </a>
                 </div>
               </div>
